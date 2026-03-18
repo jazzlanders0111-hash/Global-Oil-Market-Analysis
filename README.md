@@ -11,15 +11,21 @@
 
 ---
 
-## What This Is About
+## The Bigger Picture
 
-Oil is the world's most traded commodity. Its price shapes what you pay at the pump, what airlines charge for tickets, what governments can afford to do. Six datasets, six notebooks, one question: how does the global oil market actually work, and who controls it?
+For 50 years OPEC controlled oil. They set the price, turned the taps, and made the rules. Then American engineers figured out how to crack open shale rock, and in ten years the US went from declining producer to the largest in the world. OPEC's market share fell from 38% to 32% and they could not stop it. Their attempt to kill shale with a price war in 2014 failed. They had to invite Russia into OPEC+ in 2016 just to stay relevant. The market settled into a modest surplus around $60-70 with no single player in control anymore.
 
-Three themes run through everything:
+Then in February 2026, a military strike on Iran shut down the Strait of Hormuz and reminded everyone that geopolitics can override supply-demand fundamentals in a matter of days. Price jumped from $71 to over $100 in three weeks. Every mechanism this project analyzes became live news.
 
-**The US Shale Revolution changed who has power.** America went from importing most of its oil to becoming the world's largest producer. That shift permanently reduced OPEC's ability to control prices alone, which is why they had to invite Russia into OPEC+ in 2016.
+Six datasets, six notebooks, one question: **how does the global oil market actually work, and who controls it?**
 
-**The market mechanism works, but it is weak and fast.** Supply surpluses push prices down, but the signal gets priced in within weeks, not months. Geopolitics, OPEC decisions, and speculation all hit prices at the same time, so the supply-demand balance alone only weakly predicts direction.
+---
+
+## Three Themes That Run Through Everything
+
+**The US Shale Revolution changed who has power.** America went from importing most of its oil to becoming the world's largest producer. That shift permanently reduced OPEC's ability to control prices alone.
+
+**The market mechanism works, but it is weak and fast.** Supply surpluses push prices down, but the signal gets priced in within weeks, not months. Geopolitics, OPEC decisions, and speculation all hit prices at the same time, so supply-demand balance alone only weakly predicts direction.
 
 **OPEC cuts only work in the right conditions.** They succeed when demand is stable. They fail when demand is collapsing. And they are becoming less effective as US shale keeps growing outside OPEC's reach.
 
@@ -54,9 +60,7 @@ The main challenge: US stocks are published weekly (2,267 rows) while everything
 
 The global stocks dataset only starts in 2012, so the full six-source merge is limited to 2012-2025. For analysis that does not need stocks data, like the shale revolution and OPEC power shift, a broader dataset going back to 1993 was used instead.
 
-EIA production and consumption data extends to 2027 because it includes STEO forward projections. These are kept completely separate from observed actuals throughout the analysis.
-
-One data quality note worth documenting: thirteen OPEC member countries had a uniform 22-month gap at the start of the production series (January 1993 to October 1994). This reflects EIA coverage at the time, not corrupted data. Since the analysis focuses on post-2000 dynamics, these gaps have no impact on any finding.
+One data quality note: thirteen OPEC member countries had a uniform 22-month gap at the start of the production series (January 1993 to October 1994). This reflects EIA coverage at the time, not corrupted data. Since the analysis focuses on post-2000 dynamics, these gaps have no impact on any finding.
 
 **Market baseline at end-2025:**
 
@@ -79,6 +83,8 @@ Production is running 2 Mb/d above consumption. That modest surplus is directly 
 
 Sixty-six years of monthly oil prices with every major spike and crash annotated. The point is to show that oil price movements are not random: every major swing has an identifiable cause.
 
+![Price History 1960-2026](assets/nb02_price_history.png)
+
 **The 10 historical price eras:**
 
 | Era | Period | Avg Price | Volatility | What drove it |
@@ -96,6 +102,8 @@ Sixty-six years of monthly oil prices with every major spike and crash annotated
 
 The OPEC Shock era at 18.7% monthly volatility is the most chaotic in the entire dataset, nearly double the COVID era. When people talk about today's market being volatile, the 1970s were in a completely different category.
 
+![Volatility by Era](assets/nb02_volatility_by_era.png)
+
 **Major crash severity, peak to trough:**
 
 | Event | Peak | Trough | Drop |
@@ -107,19 +115,19 @@ The OPEC Shock era at 18.7% monthly volatility is the most chaotic in the entire
 | 2020 COVID Crash | $61.63 | $21.04 | -66% |
 | 2022-2023 Energy unwind | $116.80 | $73.26 | **-37%** |
 
-Four of the five major crashes fell 66 to 72% from peak to trough. The 2022-2023 unwind was only -37%, which is what a managed decline looks like. OPEC+ actively cut production on the way down and provided a floor. Every other crash was either unmanaged or deliberately accelerated.
+Four of the five major crashes fell 66 to 72% from peak to trough. The 2022-2023 unwind at only -37% shows what a managed decline looks like. OPEC+ actively cut production on the way down and provided a floor. Every other crash was either unmanaged or deliberately accelerated.
 
-**EIA forecast through 2027:**
+The EIA projects a growing supply surplus averaging +2.40 Mb/d through 2026-2027, implying continued downward pressure from the $60-70 range, unless OPEC+ responds with coordinated cuts.
 
-The EIA projects a growing supply surplus averaging +2.40 Mb/d through 2026-2027. Based on the historical relationship between surplus and price, that implies continued downward pressure from the $60-70 range, unless OPEC+ responds with coordinated cuts.
-
-**Key charts:** Full 60-year annotated price history (13 event markers, 12-month rolling average); price volatility bar chart by era coloured by average price level.
+![EIA Price Forecast Context](assets/nb02_eia_price_forecast.png)
 
 ---
 
 ### NB03: The Shale Revolution
 
 In 2008 the United States produced 7.1 Mb/d and had been declining for decades. By 2026 it was producing 23.6 Mb/d total liquids. That growth came almost entirely from one technology: hydraulic fracturing of tight rock formations. This notebook traces how it happened and what it did to the global balance of power.
+
+![US vs OPEC vs Russia Production](assets/nb03_oil_prod_us_opec_russia.png)
 
 **US production milestones:**
 
@@ -136,7 +144,7 @@ Growth from 2008 to 2019: **+187%**
 
 **The Permian Basin takeover:**
 
-US shale comes from eight geological basins across Texas, North Dakota, Wyoming, and surrounding states. The mix has shifted dramatically:
+US shale comes from eight geological basins across Texas, North Dakota, Wyoming, and surrounding states. The mix has shifted dramatically over 25 years:
 
 | Year | Permian share of all US shale |
 |---|---|
@@ -149,6 +157,8 @@ US shale comes from eight geological basins across Texas, North Dakota, Wyoming,
 The Permian jumped from 23% to 53% between 2015 and 2020. Every other formation plateaued or declined while the Permian kept going. The reason is geology: the Permian sits on multiple stacked rock layers, each separately productive. Drillers can extract from a new layer without moving to a new location, which dramatically reduces costs.
 
 Permian production from 2010 to today: 0.15 Mb/d to 5.95 Mb/d. That is **+3,777%.**
+
+![US Shale Production by Formation](assets/nb03_shale_formations.png)
 
 **The 2014 OPEC price war:**
 
@@ -165,13 +175,15 @@ When US shale became impossible to ignore, OPEC chose to flood the market rather
 
 Every six months prices fell and OPEC produced more, not less. They added 3.4 Mb/d to an already oversupplied market. Hundreds of smaller shale companies went bankrupt. But Permian operators cut their break-even costs below $40/bbl and survived. By late 2016 OPEC admitted the strategy had failed and formed OPEC+ with Russia.
 
-**Key charts:** US vs OPEC vs Russia vs Saudi Arabia production lines (1993-2026); stacked area chart of US shale production by formation (2000-2026).
+![2014 Oil Price War](assets/nb03_2014_price_war.png)
 
 ---
 
 ### NB04: Supply, Demand, and the Market Mechanism
 
 Does the oil market follow basic economics? When supply exceeds demand, do prices fall? And how quickly?
+
+![Global Supply-Demand Balance vs Price](assets/nb04_global_oil_supply.png)
 
 **Does surplus predict falling prices?**
 
@@ -187,13 +199,13 @@ Yes, but weakly. Surplus and price changes move in opposite directions as expect
 **How fast does the market respond?**
 
 ```
-Lag  0 months: r = -0.260  p < 0.001  strongest
-Lag  1 months: r = -0.142  p = 0.005
-Lag  2 months: r = -0.046  p = 0.365  gone
+Lag  0 months: r = -0.260  strongest
+Lag  1 months: r = -0.142  still significant
+Lag  2 months: r = -0.046  gone
 Lag  3+ months: not significant
 ```
 
-The signal peaks at lag zero and disappears by lag two. Supply-demand information is already priced in within weeks. Traders watch this data in real time and adjust immediately, so there is no delayed signal to exploit.
+The signal peaks at lag zero and disappears by lag two. Supply-demand information is already priced in within weeks. There is no delayed signal to exploit because traders are watching this data in real time.
 
 **Where demand growth is coming from:**
 
@@ -210,7 +222,7 @@ Every region increased oil consumption since 1990, except one:
 
 Europe is the only declining region, driven by electrification, efficiency improvements, and a deliberate post-Ukraine policy shift.
 
-**China and India are the 21st century demand story:**
+![Oil Consumption Major Economies](assets/nb04_oil_consumption_major.png)
 
 | Country | 1990 | Latest | Growth |
 |---|---|---|---|
@@ -220,13 +232,17 @@ Europe is the only declining region, driven by electrification, efficiency impro
 
 China went from using roughly the same oil as France in 1990 to using more than the entire European continent today. India is following the same path, about 15 to 20 years behind.
 
-**Key charts:** Supply-demand balance bar chart coloured green for surplus and red for deficit, with price panel below; major economies consumption lines (US, China, India, Russia, Japan) from 1990 to 2027.
+The EIA projects production outpacing consumption by an average of +2.40 Mb/d through 2026-2027, widening the current surplus unless OPEC+ intervenes.
+
+![World Supply and Demand Actuals and Forecast](assets/nb04_supply_demand_actuals_forecast.png)
 
 ---
 
 ### NB05: OPEC and the Power Shift
 
 OPEC controlled nearly 40% of world production at its peak. Today it controls 32% and needed Russia's help through OPEC+ just to maintain pricing influence. This notebook traces that decline and tests whether production cuts actually move prices.
+
+![OPEC vs US Market Share](assets/nb05_opec_market_share.png)
 
 **OPEC market share over time:**
 
@@ -239,6 +255,8 @@ OPEC controlled nearly 40% of world production at its peak. Today it controls 32
 | 2020-2025 | **32.0%** | **20.9%** |
 
 As OPEC's share fell from 37.8% to 32.0%, the US share nearly doubled from 10.5% to 20.9%. Roughly 5 to 6 million barrels per day of production influence shifted from OPEC-controlled to non-OPEC sources over 30 years.
+
+![OPEC vs Non-OPEC Production](assets/nb05_opec_vs_non-opec.png)
 
 **Do OPEC production cuts actually work?**
 
@@ -253,17 +271,19 @@ As OPEC's share fell from 37.8% to 32.0%, the US share nearly doubled from 10.5%
 | Post-Ukraine Nov 2022 | -2.0 Mb/d | $87.38 | $80.25 | -8.2% | NO |
 | Surprise cuts Apr 2023 | -1.7 Mb/d | $82.46 | $78.98 | -4.2% | NO |
 
-3 out of 8. The pattern explains everything. The three failures in 1998, 2001, and October 2008 all happened while demand was actively collapsing. No supply cut stops a price crash when nobody is buying. The three successes in January 2009, 2016, and 2020 all happened when demand was stable or recovering: the floor was already there, and removing supply tightened the balance.
+3 out of 8. The three failures in 1998, 2001, and October 2008 all happened while demand was actively collapsing. No supply cut stops a price crash when nobody is buying. The three successes in January 2009, 2016, and 2020 all happened when demand was stable or recovering. The 2022 and 2023 failures represent a newer problem: cuts too small to overcome structural surplus in a market where US shale keeps adding supply outside OPEC's control.
 
-The 2022 and 2023 failures represent a newer problem: cuts too small to overcome structural surplus in a market where US shale keeps adding supply outside OPEC's control.
+![Saudi Arabia Swing Producer](assets/nb05_saudi_swing_producer.png)
 
-**Key charts:** OPEC vs US share of world production over time with OPEC+ formation marked; Saudi Arabia production vs price dual panel, showing the swing producer role.
+Saudi Arabia is the only country with enough spare capacity to act as a swing producer: raising output to cool prices when they spike, cutting when they crash. The dual panel above shows Saudi production decisions against the backdrop of world prices over 30 years.
 
 ---
 
 ### NB06: Stocks as a Market Signal
 
 Oil inventories are the market's physical buffer. When production runs ahead of consumption, the surplus goes into storage. The EIA publishes US crude stock data every Wednesday and markets react within minutes. This notebook tests whether inventory levels actually predict where prices are going next.
+
+![US Commercial Crude Stocks vs Price](assets/nb06_us_comm_crude_stocks_vs_price.png)
 
 **US commercial crude stocks:**
 
@@ -283,14 +303,16 @@ US stocks z-score vs next 3-month price change:
   Direction is positive, not the negative you would expect.
 ```
 
-This counterintuitive result has a real explanation. During demand-led boom periods like 2010-2014 and post-COVID recovery, both inventories and prices rose at the same time. Refineries were buying and storing oil because demand was strong and expected to stay that way. That demand-driven co-movement overwhelms the supply-glut signal in the data.
+This counterintuitive result has a real explanation. During demand-led boom periods like 2010-2014 and the post-COVID recovery, both inventories and prices rose at the same time. Refineries were buying and storing oil because demand was strong and expected to stay that way. That demand-driven co-movement overwhelms the supply-glut signal in the data.
 
 ```
 Global stocks vs current price:          r = -0.327  significant
 Global stocks vs price 3 months later:   r = +0.081  NOT significant
 ```
 
-Global stocks are negatively correlated with current price. But they have no predictive power for where prices will be in three months. Inventory data is published and priced in immediately. By the time you observe a high stock reading, its price implication has already been traded.
+Global stocks are negatively correlated with current price, as expected. But they have no predictive power for where prices will be in three months. Inventory data is published and priced in immediately.
+
+![Global Crude Stocks vs Price](assets/nb06_global_stock_vs_price.png)
 
 **The Strategic Petroleum Reserve:**
 
@@ -301,9 +323,9 @@ Global stocks are negatively correlated with current price. But they have no pre
 | Current level | 415 million barrels |
 | Total drawdown | 311 million barrels, down **42.8%** from peak |
 
-The SPR has been deployed four times: the 1990 Gulf War, Hurricane Katrina in 2005, the 2011 Libya disruption, and the 2022 Ukraine war, which drew 180 million barrels in six months. The March 2026 IEA coordinated release of 400 million barrels, triggered by the Strait of Hormuz disruption, draws directly on this resource.
+The SPR has been deployed four times: the 1990 Gulf War, Hurricane Katrina in 2005, the 2011 Libya disruption, and the 2022 Ukraine war, which drew 180 million barrels in six months. The March 2026 IEA coordinated release of 400 million barrels, triggered by the Strait of Hormuz disruption, draws directly on this resource. The buffer is meaningfully thinner than it was a decade ago.
 
-**Key charts:** SPR history 1982-2026, annotated with all four major releases; US commercial stocks vs price dual panel with 5-year normal range band.
+![Strategic Petroleum Reserve History](assets/nb06_strategic_petrol_reserve.png)
 
 ---
 
@@ -311,13 +333,13 @@ The SPR has been deployed four times: the 1990 Gulf War, Hurricane Katrina in 20
 
 The six notebooks tell one coherent story where each finding supports the next.
 
-**NB01** sets the baseline: +2.06 Mb/d surplus, $60.88, US shale at 8.6% of world supply.
+**NB01** sets the baseline: +2.06 Mb/d surplus, $60.88, US shale at 8.6% of world supply. Everything else is measured against this.
 
-**NB02** shows where $60.88 sits historically: well below the $97.67 average of 2010-2014, consistent with a market in surplus. The current conditions are not unusual; they follow directly from the supply-demand picture.
+**NB02** shows where $60.88 sits historically: well below the $97.67 average of 2010-2014, consistent with a market in surplus. The current conditions follow directly from the supply-demand picture, and the EIA projects that surplus widening through 2027.
 
 **NB03** explains where the surplus came from. US shale grew from near zero to 9.23 Mb/d, with the Permian alone up 3,777%. That supply sits outside OPEC's control. It is why prices cannot stay above $80 for long before American drillers respond by adding more.
 
-**NB04** confirms the surplus is already reflected in prices. The market adjusts within weeks. The EIA projects the surplus widening to 3.66 Mb/d by early 2027, implying continued downward pressure. Asia's +195% demand growth is the only structural force large enough to absorb it.
+**NB04** confirms the surplus is already reflected in prices. The market adjusts within weeks. Asia's +195% demand growth is the only structural force large enough to absorb the projected surplus over time.
 
 **NB05** shows why OPEC cannot simply cut its way out. Cuts work in stable demand but fail during demand destruction, and they are progressively less effective as non-OPEC supply keeps growing. OPEC+ formed in 2016 because OPEC alone no longer had enough market share to move the needle.
 
@@ -372,6 +394,22 @@ pyarrow       parquet file I/O for processed datasets
 
 ```
 global-oil-market-analysis/
+├── assets/
+│   ├── nb02_price_history.png
+│   ├── nb02_volatility_by_era.png
+│   ├── nb02_eia_price_forecast.png
+│   ├── nb03_oil_prod_us_opec_russia.png
+│   ├── nb03_shale_formations.png
+│   ├── nb03_2014_price_war.png
+│   ├── nb04_global_oil_supply.png
+│   ├── nb04_oil_consumption_major.png
+│   ├── nb04_supply_demand_actuals_forecast.png
+│   ├── nb05_opec_market_share.png
+│   ├── nb05_opec_vs_non-opec.png
+│   ├── nb05_saudi_swing_producer.png
+│   ├── nb06_us_comm_crude_stocks_vs_price.png
+│   ├── nb06_global_stock_vs_price.png
+│   └── nb06_strategic_petrol_reserve.png
 ├── data/
 │   ├── oil-prices-world-bank-pink-sheets.xlsx
 │   ├── oil-production-supply-by-country-eia-steo.xlsx
@@ -391,7 +429,7 @@ global-oil-market-analysis/
 pip install pandas numpy openpyxl plotly scipy pyarrow
 ```
 
-Run NB01 first. It creates `data/processed/` and writes all the parquet files the other notebooks read from. After that, the remaining notebooks can run in any order.
+Run NB01 first. It creates `data/processed/` and writes all the parquet files the other notebooks read from. After that the remaining notebooks can run in any order.
 
 ---
 
